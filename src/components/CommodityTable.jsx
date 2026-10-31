@@ -18,6 +18,14 @@ const UNIT_MULTIPLIER = {
   OZ: 31.103,
 };
 
+const DEFAULT_COMMODITIES = [
+  { metal: "Gold", purity: 9999, unit: 1, weight: "GM" },
+  { metal: "Gold Kilobar", purity: 995, unit: 1, weight: "KG" },
+  { metal: "Gold Kilobar", purity: 9999, unit: 1, weight: "KG" },
+  { metal: "Gold Ten TOLA", purity: 999, unit: 1, weight: "TTB" },
+  { metal: "Silver", purity: 9999, unit: 1, weight: "KG" },
+];
+
 const CommodityTable = ({ title, items }) => {
   const { goldData, silverData } = useSpotRate();
 
@@ -60,8 +68,10 @@ const CommodityTable = ({ title, items }) => {
     });
   };
 
+  const displayItems = items && items.length > 0 ? items : DEFAULT_COMMODITIES;
+
   const rows =
-    items
+    displayItems
       ?.map((item) => {
         const spot = getSpot(item.metal);
         // 🔥 IMPORTANT: fallback to goldData

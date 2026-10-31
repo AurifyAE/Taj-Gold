@@ -20,14 +20,16 @@ import BuyerSeller from "../components/BuyerSeller";
 function TvScreen() {
   const [showLimitModal, setShowLimitModal] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
-  const [serverURL, setServerURL] = useState("");
+  const [serverURL, setServerURL] = useState(
+    "https://capital-server-gnsu.onrender.com",
+  );
   const [news, setNews] = useState([]);
   const [marketData, setMarketData] = useState({});
   const [commodities, setCommodities] = useState([]);
-  const [goldBidSpread, setGoldBidSpread] = useState("");
-  const [goldAskSpread, setGoldAskSpread] = useState("");
-  const [silverBidSpread, setSilverBidSpread] = useState("");
-  const [silverAskSpread, setSilverAskSpread] = useState("");
+  const [goldBidSpread, setGoldBidSpread] = useState(0);
+  const [goldAskSpread, setGoldAskSpread] = useState(0);
+  const [silverBidSpread, setSilverBidSpread] = useState(0);
+  const [silverAskSpread, setSilverAskSpread] = useState(0);
   const [symbols, setSymbols] = useState(["GOLD", "SILVER"]);
   const [error, setError] = useState(null);
 
@@ -35,13 +37,6 @@ function TvScreen() {
 
   const adminId = import.meta.env.VITE_APP_ADMIN_ID;
 
-  // updateMarketData(
-  //   marketData,
-  //   goldBidSpread,
-  //   goldAskSpread,
-  //   silverBidSpread,
-  //   silverAskSpread,
-  // );
   useEffect(() => {
     updateMarketData(
       marketData,
@@ -60,54 +55,65 @@ function TvScreen() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // 1. Fetch Server URL independently
       try {
-        const [spotRatesRes, serverURLRes, newsRes] = await Promise.all([
-          fetchSpotRates(adminId),
-          fetchServerURL(),
-          fetchNews(adminId),
-        ]);
+        const serverURLRes = await fetchServerURL();
+        if (serverURLRes?.data?.info?.serverURL) {
+          setServerURL(serverURLRes.data.info.serverURL);
+        }
+      } catch (err) {
+        console.warn("Using default server URL:", err.message);
+      }
 
-        // Handle Spot Rates
-        const {
-          commodities,
-          goldBidSpread,
-          goldAskSpread,
-          silverBidSpread,
-          silverAskSpread,
-        } = spotRatesRes.data.info;
-        setCommodities(commodities);
-        setGoldBidSpread(goldBidSpread);
-        setGoldAskSpread(goldAskSpread);
-        setSilverBidSpread(silverBidSpread);
-        setSilverAskSpread(silverAskSpread);
+      // 2. Fetch News independently
+      try {
+        const newsRes = await fetchNews(adminId);
+        if (newsRes?.data?.news?.news) {
+          setNews(newsRes.data.news.news);
+        }
+      } catch (err) {
+        console.warn("News fetch error:", err.message);
+      }
 
-        // Handle Server URL
-        const { serverURL } = serverURLRes.data.info;
-        setServerURL(serverURL);
-
-        // Handle News
-        setNews(newsRes.data.news.news);
-      } catch (error) {
-        setError("An error occurred while fetching data");
+      // 3. Fetch Spot Rates & Commodities independently
+      try {
+        const spotRatesRes = await fetchSpotRates(adminId);
+        if (spotRatesRes?.data?.info) {
+          const {
+            commodities: comms = [],
+            goldBidSpread: gBid = 0,
+            goldAskSpread: gAsk = 0,
+            silverBidSpread: sBid = 0,
+            silverAskSpread: sAsk = 0,
+          } = spotRatesRes.data.info;
+          setCommodities(comms);
+          setGoldBidSpread(gBid);
+          setGoldAskSpread(gAsk);
+          setSilverBidSpread(sBid);
+          setSilverAskSpread(sAsk);
+        }
+      } catch (err) {
+        console.warn(
+          "Spot rates not configured in admin panel yet:",
+          err.message,
+        );
       }
     };
 
     fetchData();
 
-    // Fetch TV screen data (you can leave this as a separate call)
+    // Fetch TV screen data
     fetchTVScreenData(adminId)
       .then((response) => {
         if (response.status === 200) {
-          // Allow TV screen view
           setShowLimitModal(false);
         }
       })
       .catch((error) => {
         if (error.response && error.response.status === 403) {
-          setShowLimitModal(true); // Show the modal on 403 status
+          setShowLimitModal(true);
         } else {
-          console.error("Error:", error.message);
-          alert("An unexpected error occurred.");
+          console.warn("TV screen status:", error.message);
         }
       });
   }, [adminId]);

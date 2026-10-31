@@ -24,42 +24,50 @@ export const SpotRateProvider = ({ children }) => {
 
   const updateMarketData = (
     marketData,
-    goldBidSpread,
-    goldAskSpread,
-    silverBidSpread,
-    silverAskSpread,
+    goldBidSpread = 0,
+    goldAskSpread = 0,
+    silverBidSpread = 0,
+    silverAskSpread = 0,
   ) => {
-    if (!marketData || !marketData.Gold || !marketData.Silver) {
+    if (!marketData) {
       return;
     }
 
-    const goldValues = calculateValues(
-      marketData.Gold?.bid,
-      goldBidSpread,
-      goldAskSpread,
-      0.5,
-    );
+    const gold = marketData.Gold || marketData.GOLD || marketData.gold;
+    const silver = marketData.Silver || marketData.SILVER || marketData.silver;
 
-    setGoldData({
-      bid: goldValues?.bid,
-      ask: goldValues?.ask,
-      low: marketData.Gold?.low,
-      high: marketData.Gold?.high,
-    });
+    if (gold && gold.bid) {
+      const goldValues = calculateValues(
+        gold.bid,
+        goldBidSpread,
+        goldAskSpread,
+        0.5,
+      );
 
-    const silverValues = calculateValues(
-      marketData.Silver?.bid,
-      silverBidSpread,
-      silverAskSpread,
-      0.05,
-      3,
-    );
-    setSilverData({
-      bid: silverValues?.bid,
-      ask: silverValues?.ask,
-      low: marketData.Silver?.low,
-      high: marketData.Silver?.high,
-    });
+      setGoldData({
+        bid: goldValues?.bid,
+        ask: goldValues?.ask,
+        low: gold.low,
+        high: gold.high,
+      });
+    }
+
+    if (silver && silver.bid) {
+      const silverValues = calculateValues(
+        silver.bid,
+        silverBidSpread,
+        silverAskSpread,
+        0.05,
+        3,
+      );
+
+      setSilverData({
+        bid: silverValues?.bid,
+        ask: silverValues?.ask,
+        low: silver.low,
+        high: silver.high,
+      });
+    }
   };
 
   return (
