@@ -166,10 +166,10 @@ const CommodityTable = ({ title, items }) => {
         width: "100%",
         borderRadius: "1.2vw",
         background:
-          "linear-gradient(135deg, rgba(2, 36, 31, 0.65) 0%, rgba(1, 22, 19, 0.75) 100%)",
-        backdropFilter: "blur(12px)",
+          "linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(250, 245, 236, 0.72) 50%, rgba(244, 236, 222, 0.8) 100%)",
+        backdropFilter: "blur(18px)",
         boxShadow:
-          "0 0.8vw 2.5vw rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 237, 165, 0.12)",
+          "0 0.8vw 2.5vw rgba(138, 84, 18, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
         padding: ".3vw 1vw 0 1vw",
         overflow: "hidden",
         position: "relative",
@@ -182,9 +182,10 @@ const CommodityTable = ({ title, items }) => {
           background: `
             linear-gradient(
               135deg,
-              rgba(255, 237, 165, 0.45) 0%,
-              rgba(200, 160, 80, 0.15) 50%,
-              rgba(255, 237, 165, 0.35) 100%
+              rgba(222, 180, 114, 0.85) 0%,
+              rgba(255, 245, 215, 0.95) 30%,
+              rgba(184, 134, 11, 0.45) 70%,
+              rgba(222, 180, 114, 0.8) 100%
             )
           `,
           WebkitMask: `
@@ -205,7 +206,7 @@ const CommodityTable = ({ title, items }) => {
           py: "0.8vw",
           px: "1.2vw",
           alignItems: "center",
-          borderBottom: "1px solid rgba(229, 197, 131, 0.18)",
+          borderBottom: "1px solid rgba(218, 178, 106, 0.35)",
         }}
       >
         <Typography
@@ -215,7 +216,7 @@ const CommodityTable = ({ title, items }) => {
               md: "1.1vw",
             },
             fontWeight: 700,
-            color: "#FFEDA5", // Gold
+            color: "#8A5A18", // Burnished Gold
             letterSpacing: "0.06em",
             textAlign: "start",
           }}
@@ -230,7 +231,7 @@ const CommodityTable = ({ title, items }) => {
               md: "1.1vw",
             },
             fontWeight: 700,
-            color: "#FFEDA5", // Gold
+            color: "#8A5A18", // Burnished Gold
             letterSpacing: "0.06em",
             textAlign: "center",
           }}
@@ -245,7 +246,7 @@ const CommodityTable = ({ title, items }) => {
               md: "1.1vw",
             },
             fontWeight: 700,
-            color: "#C2FCD4", // Soft Mint / Green
+            color: "#0D7A48", // Emerald Accent for BID
             letterSpacing: "0.06em",
             textAlign: "center",
           }}
@@ -260,7 +261,7 @@ const CommodityTable = ({ title, items }) => {
               md: "1.1vw",
             },
             fontWeight: 700,
-            color: "#FFF8EB", // Champagne Gold
+            color: "#8A5A18", // Burnished Gold
             letterSpacing: "0.06em",
             textAlign: "center",
           }}
@@ -297,7 +298,7 @@ const CommodityTable = ({ title, items }) => {
                   py: "0.7vw",
                   px: "1.2vw",
                   height: "100%",
-                  borderBottom: "1px solid rgba(229, 197, 131, 0.1)",
+                  borderBottom: "1px solid rgba(218, 178, 106, 0.2)",
                 }}
               >
                 <Typography
@@ -307,7 +308,7 @@ const CommodityTable = ({ title, items }) => {
                       md: "1.5vw",
                     },
                     fontWeight: 600,
-                    color: "#FFFFFF",
+                    color: "#181512", // Deep Charcoal Logo Color
                     textAlign: "start",
                     lineHeight: "1.2",
                   }}
@@ -317,8 +318,8 @@ const CommodityTable = ({ title, items }) => {
                     <span
                       style={{
                         fontSize: "0.95vw",
-                        fontWeight: 500,
-                        color: "#FFEDA5",
+                        fontWeight: 600,
+                        color: "#9A6D28",
                         marginLeft: "0.4vw",
                       }}
                     >
@@ -334,14 +335,14 @@ const CommodityTable = ({ title, items }) => {
                       xs: "12px",
                       md: "1.15vw",
                     },
-                    color: "#BAC8D9",
+                    color: "#5C5247",
                     textAlign: "center",
                     fontWeight: 500,
                   }}
                 >
                   {row.unit}
                 </Typography>
-                {/* Column 4: BID rate (Soft Mint Green) */}
+                {/* Column 4: BID rate (Emerald Green on Light Glass) */}
                 <Typography
                   sx={{
                     fontSize: {
@@ -349,14 +350,14 @@ const CommodityTable = ({ title, items }) => {
                       md: "1.5vw",
                     },
                     fontWeight: 700,
-                    color: "#C2FCD4",
+                    color: "#0D7A48",
                     textAlign: "center",
                     fontVariantNumeric: "tabular-nums",
                   }}
                 >
                   {formatPrice(row.bid)}
                 </Typography>
-                {/* Column 3: ASK rate (Yellow/Gold) */}
+                {/* Column 3: ASK rate (Deep Charcoal Black on Light Glass) */}
                 <Typography
                   sx={{
                     fontSize: {
@@ -364,7 +365,7 @@ const CommodityTable = ({ title, items }) => {
                       md: "1.5vw",
                     },
                     fontWeight: 700,
-                    color: "#FFF0D3",
+                    color: "#181512",
                     textAlign: "center",
                     fontVariantNumeric: "tabular-nums",
                   }}

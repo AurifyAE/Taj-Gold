@@ -71,13 +71,18 @@ const SystemClock = () => {
       {/* Glass Container */}
       <Box
         sx={{
-          display: "flex",
+          display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "1vw",
-          width: "100%",
-          padding: "0vw 2.5vw",
-          borderRadius: "20px",
+          gap: "1.2vw",
+          padding: "0.5vw 2vw",
+          borderRadius: "2vw",
+          background:
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(250, 245, 236, 0.75) 50%, rgba(244, 236, 222, 0.82) 100%)",
+          border: "1px solid rgba(218, 178, 106, 0.45)",
+          boxShadow:
+            "0 0.4vw 1.2vw rgba(138, 84, 18, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+          backdropFilter: "blur(12px)",
         }}
       >
         {/* Date */}
@@ -85,12 +90,11 @@ const SystemClock = () => {
           sx={{
             fontSize: {
               xs: "12px",
-              sm: "2vw",
+              sm: "1.7vw",
             },
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: "2px",
-            color: "#FFEDA5", // Champagne Gold
-            textShadow: "0 2px 12px rgba(0, 0, 0, 0.6)",
+            color: "#8A5A18", // Luxury Burnished Gold
             lineHeight: "1",
           }}
         >
@@ -100,14 +104,13 @@ const SystemClock = () => {
         <Typography
           sx={{
             fontSize: {
-              xs: "12px",
+              xs: "11px",
               sm: "1vw",
             },
-            color: "#EAEFF5", // Platinum Silver
+            color: "#181512", // Deep Charcoal Black
             letterSpacing: "2px",
-            fontWeight: 500,
+            fontWeight: 600,
             lineHeight: "1",
-            textShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
           }}
         >
           {timeData.day || "-----"}

@@ -20,13 +20,13 @@ const NewsTicker = ({ newsItems = [] }) => {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        backdropFilter: "blur(8px)",
+        backdropFilter: "blur(16px)",
         background:
-          "linear-gradient(90deg, rgba(1, 24, 21, 0.88) 0%, rgba(3, 40, 34, 0.8) 50%, rgba(1, 24, 21, 0.88) 100%)",
+          "linear-gradient(90deg, rgba(255, 255, 255, 0.88) 0%, rgba(251, 246, 238, 0.92) 50%, rgba(255, 255, 255, 0.88) 100%)",
         borderTop: "1.5px solid",
         borderImage:
-          "linear-gradient(to right, rgba(229, 197, 131, 0.05) 0%, rgba(255, 237, 165, 0.7) 50%, rgba(229, 197, 131, 0.05) 100%) 1",
-        boxShadow: "0 -4px 20px rgba(0, 0, 0, 0.5)",
+          "linear-gradient(to right, rgba(218, 178, 106, 0.15) 0%, rgba(218, 178, 106, 0.85) 50%, rgba(218, 178, 106, 0.15) 100%) 1",
+        boxShadow: "0 -4px 20px rgba(138, 84, 18, 0.12)",
       }}
     >
       {/* LEFT BRAND SECTION */}
@@ -43,7 +43,7 @@ const NewsTicker = ({ newsItems = [] }) => {
       >
         <Typography
           sx={{
-            color: "#FFEDA5", // Zelora Gold
+            color: "#8A5A18", // Taj Gold
             fontSize: {
               xs: "12px",
               md: "1.1vw",
@@ -53,11 +53,11 @@ const NewsTicker = ({ newsItems = [] }) => {
             whiteSpace: "nowrap",
           }}
         >
-          Zelora Gold Updates
+          Taj Gold Updates
         </Typography>
         <Typography
           sx={{
-            color: "rgba(255, 237, 165, 0.35)",
+            color: "rgba(138, 84, 18, 0.35)",
             fontSize: {
               xs: "14px",
               md: "1.2vw",
@@ -99,12 +99,12 @@ const NewsTicker = ({ newsItems = [] }) => {
               <Typography
                 component="span"
                 sx={{
-                  color: "#FFFFFF",
+                  color: "#181512",
                   fontSize: {
                     xs: "12px",
                     md: "1.15vw",
                   },
-                  fontWeight: 500,
+                  fontWeight: 600,
                   whiteSpace: "nowrap",
                   mx: "1.5vw",
                   lineHeight: "1",
@@ -114,7 +114,7 @@ const NewsTicker = ({ newsItems = [] }) => {
               </Typography>
               <span
                 style={{
-                  color: "#FFEDA5",
+                  color: "#9A6D28",
                   fontSize: "1.3vw",
                   opacity: 0.9,
                   marginRight: "1vw",

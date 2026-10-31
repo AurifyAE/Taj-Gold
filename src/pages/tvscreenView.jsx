@@ -203,12 +203,12 @@ function TvScreen() {
     <Box
       sx={{
         minHeight: "100dvh",
-        color: "white",
+        color: "#181512",
         pb: { xs: "0", md: "3vw" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#000",
+        backgroundColor: "#FAF6EE",
       }}
     >
       <Box

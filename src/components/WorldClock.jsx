@@ -78,10 +78,11 @@ const WorldClockHorizontal = () => {
             padding: "0.4vw 1.2vw",
             borderRadius: "0.8vw",
             background:
-              "linear-gradient(135deg, rgba(2, 36, 31, 0.55) 0%, rgba(1, 22, 19, 0.65) 100%)",
-            border: "1px solid rgba(229, 197, 131, 0.25)",
-            boxShadow: "0 0.4vw 1.2vw rgba(0, 0, 0, 0.35)",
-            backdropFilter: "blur(0.6vw)",
+              "linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(250, 245, 236, 0.75) 50%, rgba(244, 236, 222, 0.82) 100%)",
+            border: "1px solid rgba(218, 178, 106, 0.45)",
+            boxShadow:
+              "0 0.4vw 1.2vw rgba(138, 84, 18, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(12px)",
           }}
         >
           <Box
@@ -115,7 +116,7 @@ const WorldClockHorizontal = () => {
                   lg: "1vw",
                 },
                 fontWeight: 700,
-                color: "#FFEDA5", // Luxury Gold
+                color: "#8A5A18", // Luxury Burnished Gold
                 letterSpacing: "0.08vw",
               }}
             >
@@ -128,7 +129,7 @@ const WorldClockHorizontal = () => {
                   xs: "14px",
                   lg: "1.2vw",
                 },
-                color: "#FFFFFF",
+                color: "#181512", // Deep Charcoal Black
                 fontWeight: 700,
                 letterSpacing: "0.03vw",
               }}
