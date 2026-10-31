@@ -6,7 +6,7 @@ const NewsTicker = ({ newsItems = [] }) => {
   const items =
     newsItems.length > 0
       ? newsItems
-      : [{ description: "Welcome to Zelora Gold Updates" }];
+      : [{ description: "Welcome to Taj Gold Updates" }];
 
   return (
     <Box
