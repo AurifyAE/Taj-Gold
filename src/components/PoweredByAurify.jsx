@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import AurifyLogo from "/images/aurify-logo.png";
+import AurifyLogo from "/images/aurify-logo.svg";
 
 const PoweredByAurify = () => {
   return (
@@ -25,10 +25,10 @@ const PoweredByAurify = () => {
           fontSize: { xs: "15px", md: "1.2vw" },
 
           fontWeight: 500,
-          color: "rgba(255, 255, 255, 0.8)",
+          color: "rgba(0 0 0 / 0.8)",
           transition: "color 0.3s ease",
           "&:hover": {
-            color: "#ffffff",
+            color: "#000000",
           },
           display: "flex",
           alignItems: "center",
